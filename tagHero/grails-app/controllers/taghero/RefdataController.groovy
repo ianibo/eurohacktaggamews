@@ -8,12 +8,26 @@ import static groovyx.net.http.ContentType.XML
 
 class RefdataController {
 
+// Times come from http://annocultor.eu/time/
+// Places come from view-source:http://api.europeana.eu/api/opensearch.rss?searchTerms=enrichment_place_broader_label%3Afrance&wskey=RZBHCDEIOL
+
     def index = { 
 
       // This declares an array-list and populates it with three string elements
       def results = [ 'one', 'two', 'three' ]
 
-      example2();
+      switch ( params.type ) {
+        case 'place':
+          results = listPlaces();
+          break;
+        case 'time':
+          results = listTimes();
+          break;
+        default:
+          println "No type"
+      }
+
+      // example2();
 
       // Wrap each item in the results array in an outer <refdata> tag with an <item> tag for each array member
       render(contentType:"application/xml") {
@@ -25,6 +39,15 @@ class RefdataController {
       }
 
     }
+
+
+  def listPlaces() {
+    [ 'Colombe','Cheval' ]
+  }
+
+  def listTimes() {
+    [ 'Neolithic','1990','1980' ]
+  }
 
   def example2() {
     withHttp(uri: "http://api.europeana.eu") {
