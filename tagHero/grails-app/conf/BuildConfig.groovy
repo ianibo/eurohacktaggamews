@@ -27,5 +27,6 @@ grails.project.dependency.resolution = {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
 
         // runtime 'mysql:mysql-connector-java:5.1.13'
+        compile 'org.apache.httpcomponents:httpmime:4.0.3'
     }
 }
