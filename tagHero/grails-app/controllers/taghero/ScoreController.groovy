@@ -15,6 +15,8 @@ class ScoreController {
 	//return the list
 	//result
 
+	println "HELLO ${params.terms}"
+
 	//This is a short-cut to answer directly a xml instead of xml template or html template (similar to jsp)
 	//grails POWER
 
